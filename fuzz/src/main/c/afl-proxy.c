@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
+//ajax: afl-proxy for comunicating AFL
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -109,6 +109,7 @@ void log_to_file(int to_exit, char* log_file_name, char const *fmt, ...) {
 
 }
 
+//ajax: 原始的afl-fuzz启动afl-proxy，afl-proxy启动target java program
 /* main proxy driver. communication channel between a running instance
    of AFL and Java */
 int main(int argc, char** argv) {
@@ -152,6 +153,7 @@ int main(int argc, char** argv) {
 
   log_to_file(0, log_file_name, "opened to java fifo %s\n", to_java_str);
 
+  //ajax: set up FIFO from Java
   FILE * from_java_fd = fopen(from_java_str, "r");
   if (from_java_fd == NULL){
     log_to_file(1, log_file_name, "Failed to open from java fifo %s\n", from_java_str);
@@ -176,6 +178,7 @@ int main(int argc, char** argv) {
  
   /* say the first hello to AFL. use write() because we
      have an int file descriptor */
+  //ajax: FORKSRV_FD is defined in origin AFL
   if (write(FORKSRV_FD + 1, (void*) &helo, 4) < 4) {
     log_to_file(0, log_file_name, "Error saying initial hello to AFL\n");
     run_once = true;

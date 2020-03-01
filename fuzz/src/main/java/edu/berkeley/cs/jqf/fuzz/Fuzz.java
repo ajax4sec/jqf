@@ -39,6 +39,7 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
+//ajax: custom annotation "Fuzz"
 public @interface Fuzz {
 
     /**

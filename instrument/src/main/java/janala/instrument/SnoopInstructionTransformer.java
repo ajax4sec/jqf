@@ -121,7 +121,8 @@ public class SnoopInstructionTransformer implements ClassFileTransformer {
           }
         }
       }
-
+      
+      //ajax: asm code
       byte[] ret = cbuf;
       try {
 

@@ -34,6 +34,7 @@ import java.io.File;
 import edu.berkeley.cs.jqf.fuzz.junit.GuidedFuzzing;
 import org.junit.runner.Result;
 
+//ajax: main function for Zest
 /**
  * Entry point for fuzzing with Zest.
  *
